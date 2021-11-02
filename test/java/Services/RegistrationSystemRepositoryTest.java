@@ -17,6 +17,8 @@ class RegistrationSystemRepositoryTest {
         Student student2 = new Student(1255L, "Andrei", "Andreescu");
         Course course1 = new Course(123L, "Math", teacher1, 2, 28);
         Course course2 = new Course(1233L, "Chemistry", teacher1, 1, 28);
+//        InMemoryCourseRepository course1 = new InMemoryCourseRepository();
+
         RegistrationSystemRepository registrationSystem = new RegistrationSystemRepository();
 
         // Successfully adds a student
@@ -29,13 +31,40 @@ class RegistrationSystemRepositoryTest {
 
     @Test
     void retrieveCoursesWithFreePlaces() {
+        RegistrationSystemRepository registrationSystem = new RegistrationSystemRepository();
+        Teacher teacher1 = new Teacher(124L, "Ion", "Ionescu");
+        Student student1 = new Student(125L, "Popescu", "Pop");
+        Student student2 = new Student(1255L, "Andrei", "Andreescu");
+        Course course1 = new Course(123L, "Math", teacher1, 2, 28);
+        Course course2 = new Course(1233L, "Chemistry", teacher1, 1, 28);
+
+        registrationSystem.register(course1, student1);
+        assertEquals(registrationSystem.retrieveCoursesWithFreePlaces().size(), 2);
+
+        registrationSystem.register(course1, student2);
+        assertEquals(registrationSystem.retrieveCoursesWithFreePlaces().size(), 0);
     }
 
     @Test
     void retrieveStudentsEnrolledForACourse() {
+        RegistrationSystemRepository registrationSystem = new RegistrationSystemRepository();
+        Teacher teacher1 = new Teacher(124L, "Ion", "Ionescu");
+        Student student1 = new Student(125L, "Popescu", "Pop");
+        Student student2 = new Student(1255L, "Andrei", "Andreescu");
+        Course course1 = new Course(123L, "Math", teacher1, 2, 28);
+        Course course2 = new Course(1233L, "Chemistry", teacher1, 1, 28);
+
+        registrationSystem.register(course1, student1);
+        assertEquals(1, registrationSystem.retrieveStudentsEnrolledForACourse(course1).size());
+        registrationSystem.register(course1, student2);
+        assertEquals(2, registrationSystem.retrieveStudentsEnrolledForACourse(course1).size());
+        assertEquals(0, registrationSystem.retrieveStudentsEnrolledForACourse(course2).size());
+
     }
 
     @Test
     void getAllCourses() {
+        RegistrationSystemRepository registrationSystem = new RegistrationSystemRepository();
+        assertEquals(2, registrationSystem.getAllCourses().size());
     }
 }

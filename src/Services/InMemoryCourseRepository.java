@@ -18,9 +18,10 @@ public class InMemoryCourseRepository implements CrudRepository<Course> {
      * Constructor of the class
      */
     public InMemoryCourseRepository() {
-        Teacher teacher1 = new Teacher(0L, "", "");
-        courses.add(new Course(0L, "", teacher1, 0, 0));
-        courses.add(new Course(0L, "", teacher1, 0, 0));
+        Teacher teacher1 = new Teacher(124L, "Ion", "Ionescu");
+        Teacher teacher2 = new Teacher(1244L, "Vlad", "Vladimirescu");
+        courses.add(new Course(123L, "Math", teacher1, 2, 28));
+        courses.add(new Course(1233L, "Chemistry", teacher2, 1, 28));
     }
 
     public List<Course> getCourses() {

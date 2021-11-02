@@ -54,7 +54,7 @@ public class Student extends Person {
         if (totalCredits + course.getCredit() < 30) {
             totalCredits += course.getCredit();
             enrolledCourses.add(course);
-            course.addEnrolledStudent(this);
+//            course.addEnrolledStudent(this);
             return true;
         }
         return false;

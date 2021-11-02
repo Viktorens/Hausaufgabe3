@@ -21,7 +21,7 @@ public class RegistrationSystemRepository implements IRegistrationSystem {
      */
     @Override
     public boolean register(Course course, Student student) {
-       return student.enrollInCourse(course);
+        return student.enrollInCourse(course);
     }
 
     /**

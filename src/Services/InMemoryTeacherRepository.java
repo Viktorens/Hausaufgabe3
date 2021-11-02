@@ -16,8 +16,8 @@ public class InMemoryTeacherRepository implements CrudRepository<Teacher> {
      * Constructor of the class
      */
     public InMemoryTeacherRepository() {
-        teachers.add(new Teacher(0L, "", ""));
-        teachers.add(new Teacher(0L, "", ""));
+        teachers.add(new Teacher(124L, "Ion", "Ionescu"));
+        teachers.add(new Teacher(1244L, "Vlad", "Vladimirescu"));
     }
 
     // Implementation of the CRUD
