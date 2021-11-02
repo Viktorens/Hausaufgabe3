@@ -3,11 +3,20 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Student class
+ */
 public class Student extends Person {
     private int totalCredits;
     private List<Course> enrolledCourses = new ArrayList<>();
 
-    // Constructor
+    /**
+     * Constructor of class Student
+     *
+     * @param id        must be of type Long
+     * @param firstName must be of type String
+     * @param lastName  must be of type String
+     */
     public Student(Long id, String firstName, String lastName) {
         super(id, firstName, lastName);
     }
@@ -30,7 +39,12 @@ public class Student extends Person {
         return this.getFirstName() + " " + this.getLastName();
     }
 
-    //    Methode for enrolling Student
+    /**
+     * Methode for enrolling Student
+     *
+     * @param course must be of type Course
+     * @return true if enrollment was successful - otherwise false
+     */
     public boolean enrollInCourse(Course course) {
         // Checks if course still has place
         if (!course.addEnrolledStudent(this)) {

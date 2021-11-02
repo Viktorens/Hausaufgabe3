@@ -3,6 +3,9 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Course class
+ */
 public class Course {
     private Long id;
     private String name;
@@ -11,7 +14,15 @@ public class Course {
     private int credit;
     private List<Student> enrolledStudents = new ArrayList<>();
 
-    //    Constructor
+    /**
+     * Constructor of class Course
+     *
+     * @param id            must be of type Long
+     * @param name          must be of type String
+     * @param teacher       must be of type Teacher and not null
+     * @param maxEnrollment must be of type int
+     * @param credit        must be of type int
+     */
     public Course(Long id, String name, Teacher teacher, int maxEnrollment, int credit) {
         this.name = name;
         this.teacher = teacher;
@@ -45,7 +56,12 @@ public class Course {
         return enrolledStudents;
     }
 
-    // Enroll Student in Course List
+    /**
+     * Enroll Student in Course List
+     *
+     * @param student must be of type Student
+     * @return true if the enrollment was successful - otherwise false
+     */
     public boolean addEnrolledStudent(Student student) {
         if (this.isCourseFull()) {
             return false;
@@ -54,7 +70,11 @@ public class Course {
         return true;
     }
 
-    // Checks if course still has places
+    /**
+     * Checks if course still has places
+     *
+     * @return true if the list of courses has the maximum number of enrollments
+     */
     public boolean isCourseFull() {
         return enrolledStudents.size() == maxEnrollment;
     }
